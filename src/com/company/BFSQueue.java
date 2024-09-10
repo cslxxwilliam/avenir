@@ -9,7 +9,7 @@ class BFSQueue {
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            // poll() removes the present head.  
+            // removes the present head.
             Node curr = queue.poll();
             System.out.print(curr.data + " ");
 
@@ -34,7 +34,6 @@ class BFSQueue {
         root.left.right = new Node(4);
         root.right.left = new Node(5);
         root.right.right = new Node(6);
-
         printTree(root);
     }
 }
