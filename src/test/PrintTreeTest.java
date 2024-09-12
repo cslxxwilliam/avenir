@@ -1,7 +1,9 @@
 package test;
 
+import com.company.BFSPrintedArray;
 import com.company.BFSQueue;
 import com.company.Node;
+import com.company.TreePrinter;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -12,15 +14,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PrintTreeTest {
 
     @Test
-    public void testPrintTree() {
+    public void testPrintTreeBFSQueue() {
         final Node root = populateTree();
 
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         final PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
 
-        final BFSQueue bfsQueue = new BFSQueue();
-        bfsQueue.printTree(root);
+        final TreePrinter bfsQueue = new BFSQueue(root);
+        bfsQueue.printTree();
+
+        System.setOut(originalOut);
+
+        final String expectedOutput = "0 1 2 3 4 5 6 ";
+        assertEquals(expectedOutput, outputStream.toString());
+    }
+
+    @Test
+    public void testPrintTreeBFSPrintedArray() {
+        final Node root = populateTree();
+
+        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        final PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outputStream));
+
+        final BFSPrintedArray bfsPrintedArray = new BFSPrintedArray(root);
+        bfsPrintedArray.printTree();
 
         System.setOut(originalOut);
 

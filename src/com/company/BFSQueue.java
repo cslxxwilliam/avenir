@@ -3,8 +3,15 @@ package com.company;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFSQueue {
-    public void printTree(final Node root) {
+public class BFSQueue implements TreePrinter {
+    private final Node root;
+
+    public BFSQueue(final Node root) {
+        this.root = root;
+    }
+
+    @Override
+    public void printTree() {
         if (root == null) {
             return;
         }
