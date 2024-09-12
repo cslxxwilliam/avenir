@@ -1,13 +1,16 @@
-package com.avenir;
+package com.avenir.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFSQueue implements TreePrinter {
     private final Node root;
+    private final Queue<Node> queue = new LinkedList<>();
+    private final StringBuilder output= new StringBuilder();
 
     public BFSQueue(final Node root) {
         this.root = root;
+        queue.add(root);
     }
 
     @Override
@@ -15,10 +18,6 @@ public class BFSQueue implements TreePrinter {
         if (root == null) {
             return;
         }
-
-        final Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        final StringBuilder output = new StringBuilder();
 
         while (!queue.isEmpty()) {
             // Removes the queue head

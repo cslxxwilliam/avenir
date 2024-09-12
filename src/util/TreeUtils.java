@@ -1,6 +1,6 @@
 package util;
 
-import com.avenir.Node;
+import com.avenir.tree.Node;
 
 public class TreeUtils {
     public static Node populateTree() {

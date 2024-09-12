@@ -1,9 +1,9 @@
 package test;
 
-import com.avenir.BFSPrintedArray;
-import com.avenir.BFSQueue;
-import com.avenir.Node;
-import com.avenir.TreePrinter;
+import com.avenir.tree.BFSRecursive;
+import com.avenir.tree.BFSQueue;
+import com.avenir.tree.Node;
+import com.avenir.tree.TreePrinter;
 import org.junit.jupiter.api.Test;
 import util.TreeUtils;
 
@@ -32,14 +32,14 @@ public class PrintTreeTest {
     }
 
     @Test
-    public void testPrintTreeBFSPrintedArray() {
+    public void testPrintTreeBFSRecursive() {
         final Node root = TreeUtils.populateTree();
 
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         final PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
 
-        final BFSPrintedArray bfsPrintedArray = new BFSPrintedArray(root);
+        final BFSRecursive bfsPrintedArray = new BFSRecursive(root);
         bfsPrintedArray.printTree();
 
         System.setOut(originalOut);

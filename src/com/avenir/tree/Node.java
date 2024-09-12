@@ -1,4 +1,4 @@
-package com.avenir;
+package com.avenir.tree;
 
 public class Node {
     private final int data;

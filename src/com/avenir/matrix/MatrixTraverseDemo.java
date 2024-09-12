@@ -1,4 +1,4 @@
-package com.avenir;
+package com.avenir.matrix;
 
 public class MatrixTraverseDemo {
     public static void main(final String[] args) {
@@ -8,9 +8,9 @@ public class MatrixTraverseDemo {
                 {9, 10, 11, 12},
                 {13, 14, 15, 16}
         };
-        final MatrixTraverse matrixTraverse = new MatrixTraverse(matrix);
+        final DFSBacktracking DFSBacktracking = new DFSBacktracking(matrix);
 
-        final int noOfPossiblePaths = matrixTraverse.printAllPaths();
+        final int noOfPossiblePaths = DFSBacktracking.printAllPaths();
         System.out.println("Total number of possible paths: " + noOfPossiblePaths);
     }
 }

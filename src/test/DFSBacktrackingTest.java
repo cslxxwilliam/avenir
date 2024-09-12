@@ -1,6 +1,6 @@
 package test;
 
-import com.avenir.MatrixTraverse;
+import com.avenir.matrix.DFSBacktracking;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -8,8 +8,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MatrixTraverseTest {
-
+public class DFSBacktrackingTest {
     @Test
     public void testPrintAllPaths() {
         final int[][] matrix = {
@@ -23,8 +22,8 @@ public class MatrixTraverseTest {
         final PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
 
-        final MatrixTraverse matrixTraverse = new MatrixTraverse(matrix);
-        final int noOfPossiblePaths = matrixTraverse.printAllPaths();
+        final DFSBacktracking DFSBacktracking = new DFSBacktracking(matrix);
+        final int noOfPossiblePaths = DFSBacktracking.printAllPaths();
 
         System.setOut(originalOut);
 
@@ -52,7 +51,6 @@ public class MatrixTraverseTest {
                         1, 5, 9, 13, 14, 15, 16,\s
                         """
                 ;
-
 
         assertEquals(expectedOutput, outputStream.toString());
         assertEquals(20, noOfPossiblePaths);

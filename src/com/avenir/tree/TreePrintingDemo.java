@@ -1,4 +1,4 @@
-package com.avenir;
+package com.avenir.tree;
 
 import static util.TreeUtils.populateTree;
 
@@ -10,8 +10,8 @@ public class TreePrintingDemo {
         final TreePrinter bfsQueue = new BFSQueue(root);
         bfsQueue.printTree();
 
-        System.out.println("\nBFSPrintedArray output:");
-        final TreePrinter bfsPrintedArray = new BFSPrintedArray(root);
+        System.out.println("\nBFSRecursive output:");
+        final TreePrinter bfsPrintedArray = new BFSRecursive(root);
         bfsPrintedArray.printTree();
     }
 }
