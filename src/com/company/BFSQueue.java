@@ -4,42 +4,43 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class BFSQueue {
-    static void printTree(Node root) {
+    static void printTree(final Node root) {
         if (root == null) {
             return;
         }
 
-        Queue<Node> queue = new LinkedList<>();
+        final Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         final StringBuilder output = new StringBuilder();
 
         while (!queue.isEmpty()) {
-            // removes the present head.
-            Node curr = queue.poll();
-            output.append(curr.data).append(" ");
+            // removes the queue head
+            final Node curr = queue.poll();
+            output.append(curr.getData()).append(" ");
 
             // Enqueue left child
-            if (curr.left != null) {
-                queue.add(curr.left);
+            if (curr.getLeft() != null) {
+                queue.add(curr.getLeft());
             }
 
             // Enqueue right child
-            if (curr.right != null) {
-                queue.add(curr.right);
+            if (curr.getRight() != null) {
+                queue.add(curr.getRight());
             }
         }
 
         System.out.println(output);
     }
 
-    public static void main(String[] args) {
-        Node root = new Node(0);
-        root.left = new Node(1);
-        root.right = new Node(2);
-        root.left.left = new Node(3);
-        root.left.right = new Node(4);
-        root.right.left = new Node(5);
-        root.right.right = new Node(6);
+    public static void main(final String[] args) {
+        final Node root = new Node(0);
+        root.setLeft(new Node(1));
+        root.setRight(new Node(2));
+        root.getLeft().setLeft(new Node(3));
+        root.getLeft().setRight(new Node(4));
+        root.getRight().setLeft(new Node(5));
+        root.getRight().setRight(new Node(6));
+
         printTree(root);
     }
 }
