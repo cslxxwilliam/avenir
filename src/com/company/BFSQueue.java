@@ -4,14 +4,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class BFSQueue {
-    static void printTree(Node root)
-    {
+    static void printTree(Node root) {
+        if (root == null) {
+            return;
+        }
+
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
+        final StringBuilder output = new StringBuilder();
+
         while (!queue.isEmpty()) {
             // removes the present head.
             Node curr = queue.poll();
-            System.out.print(curr.data + " ");
+            output.append(curr.data).append(" ");
 
             // Enqueue left child
             if (curr.left != null) {
@@ -23,10 +28,11 @@ class BFSQueue {
                 queue.add(curr.right);
             }
         }
+
+        System.out.println(output);
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Node root = new Node(0);
         root.left = new Node(1);
         root.right = new Node(2);
