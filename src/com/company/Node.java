@@ -1,6 +1,6 @@
 package com.company;
 
-class Node {
+public class Node {
     private final int data;
     private Node left;
     private Node right;
