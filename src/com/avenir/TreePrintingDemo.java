@@ -2,7 +2,7 @@ package com.avenir;
 
 import static util.TreeUtils.populateTree;
 
-public class Demo {
+public class TreePrintingDemo {
     public static void main(final String[] args) {
         final Node root = populateTree();
 

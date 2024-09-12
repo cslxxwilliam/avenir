@@ -4,26 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatrixTraverse {
-    //matrix dimensions and total no. of combinations
-    static int colLen, rowLen, noOfCombination;
+    private final int colSize;
+    private final int rowSize;
+    private final int[][] matrix;
+    private final List<Integer> path = new ArrayList<>();
+    private int noOfCombination;
 
-    static void printPath(final List<Integer> path) {
-        for (int i : path) {
-            System.out.print(i + ", ");
+    public MatrixTraverse(final int[][] matrix) {
+        this.matrix = matrix;
+        this.colSize = matrix.length;
+        this.rowSize = matrix[0].length;
+    }
+
+    void printPath(final List<Integer> path) {
+        final StringBuilder output = new StringBuilder();
+
+        for (final int i : path) {
+            output.append(i).append(", ");
         }
 
         noOfCombination++;
-        System.out.println();
+        output.append("\n");
+        System.out.print(output);
     }
 
-    static void searchPaths(final int[][] arr,
+    public void searchPaths(final int[][] matrix,
                             final List<Integer> path,
                             final int i,
                             final int j) {
         // Recursion terminal condition:
         // Reach the target bottom right cell, print the path
-        if (i == colLen - 1 && j == rowLen - 1) {
-            path.add(arr[i][j]);
+        if (i == colSize - 1 && j == rowSize - 1) {
+            this.path.add(matrix[i][j]);
             printPath(path);
 
             //backtracking
@@ -32,32 +44,24 @@ public class MatrixTraverse {
         }
 
         // Include current cell in the path
-        path.add(arr[i][j]);
+        path.add(matrix[i][j]);
 
         // Move right
-        if (j + 1 < rowLen) {
-            searchPaths(arr, path, i, j + 1);
+        if (j + 1 < rowSize) {
+            searchPaths(matrix, path, i, j + 1);
         }
 
         // Move down
-        if (i + 1 < colLen) {
-            searchPaths(arr, path, i + 1, j);
+        if (i + 1 < colSize) {
+            searchPaths(matrix, path, i + 1, j);
         }
 
         // Backtracking
         path.remove(path.size() - 1);
     }
 
-    public static void main(final String[] args) {
-        int[][] matrix
-                = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-
-        List<Integer> path = new ArrayList<>();
-
-        int i = 0, j = 0;
-        colLen = matrix.length;
-        rowLen = matrix[0].length;
-        searchPaths(matrix, path, i, j);
-        System.out.println("No. of combination: " + noOfCombination);
+    public int printAllPaths() {
+        searchPaths(matrix,path,0,0);
+        return noOfCombination;
     }
 }
