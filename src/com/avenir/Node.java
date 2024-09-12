@@ -1,4 +1,4 @@
-package com.company;
+package com.avenir;
 
 public class Node {
     private final int data;

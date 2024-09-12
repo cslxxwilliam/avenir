@@ -1,9 +1,8 @@
-package com.company;
+package com.avenir;
 
 public class BFSPrintedArray implements TreePrinter {
     private final Node root;
     private static boolean[] printed;
-    private StringBuilder output = new StringBuilder();
 
     public BFSPrintedArray(final Node root) {
         this.root = root;
@@ -15,29 +14,31 @@ public class BFSPrintedArray implements TreePrinter {
         printTree(root, printed);
     }
 
-    static void printTree(final Node node, final boolean[] printed)
+    private void printTree(final Node node, final boolean[] printed)
     {
         if(node==null){
             return;
         }
 
-        printNode(node, printed);
-        printNode(node.getLeft(), printed);
-        printNode(node.getRight(), printed);
+        final StringBuilder output = new StringBuilder();
+
+        printNode(node, printed, output);
+        printNode(node.getLeft(), printed, output);
+        printNode(node.getRight(), printed, output);
 
         printTree(node.getLeft(), printed);
         printTree(node.getRight(), printed);
 
-
+        System.out.print(output);
     }
 
-    private static void printNode(final Node node, final boolean[] printed) {
+    private void printNode(final Node node, final boolean[] printed, final StringBuilder output) {
         if(node==null){
             return;
         }
 
         if(!printed[node.getData()]){
-            System.out.print(node.getData() + " ");
+            output.append(node.getData()).append(" ");
             printed[node.getData()] = true;
         }
     }
